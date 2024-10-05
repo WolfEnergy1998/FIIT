@@ -1,0 +1,60 @@
+Neuronové siete:
+
+Prednaska č.1.
+	Od 5-8 týžden samostatne
+
+	Semestralne projekty -- koncia 9 tyzdnom (zadavanie)
+
+		AI: 
+			The ability of a digital computer or computer-controlled 
+			robot to perform tasks commonly associated with intelligent beings
+			
+			Machine learning:
+				ability to lear from certain data, to generalise on other data (which are part of that group)
+
+
+				Representative learning
+					Transformation of input features
+ 					• Better suited for a given task than the original inpu
+					
+					Deep Learning
+						deeper <=> closer to inteligent decision
+
+
+		Artificial Neuron: Inspiration bz biological neuron
+					composed of:
+							1. Input vector
+							2. Linear function (etc. Multiplication function)
+							3. Activation function
+							4. Output value
+
+					Single Perceptron: capable of soling linear separatable||... functions
+					Continous Perceptron: output propability as ocmpared to upp 100 percent prop.
+
+					MLP (Multi-lazer perceptron)
+						Activation function
+							Sigmoid:
+							TanH:
+							ReLu:
+
+							• Number of output perceptrons - number of classes for classification
+ 							• Continuous & Differentiable function
+
+
+
+ 							Loss funcction: Measures precision of h(x), y for given sample x
+ 							Cost function: Measures precision of h(x), y for entire data set X
+
+
+
+
+ 							L: number of hidden layers + output layer (as layer we only take, learnable layers, not input)
+
+
+
+
+Cvicenie:
+	odovzdávame vo formáte .zip
+
+	Pri práci v Colabe si to save as copy, pre ulozenie zmien
+		openML

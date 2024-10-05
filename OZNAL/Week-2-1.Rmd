@@ -1,0 +1,92 @@
+---
+title: "Week-2-1"
+output: html_document
+date: "2024-02-18"
+---
+
+# Task n.1.
+
+Load `players_22.csv` data into R by completing the missing code.
+
+```{r}
+library(tidyverse)
+library(magrittr)
+
+#setwd("...") # Set the correct path to players_22.csv
+data <- read_csv("Files/players_22.csv", col_names = TRUE, num_threads = 4) # Read data into R
+data # Check that data are properly loaded 
+```
+
+# Task n.2.
+
+Complete the code below. Use `mutate()` to create a new column `role`, containing the player’s role (offense, defense, midfielder, goal keeper) based on his attributes in `player_positions`. You can use `%like%` (from library data.table) inside `case_when()` to grep one of multiple player positions. `%<>%` represents bi-directional pipe.
+
+```{r}
+library(data.table) # Implements the %like% operator
+
+data %<>% mutate(
+  role = case_when(
+    .$player_positions %like% "CF|LW|RW|ST|CAM" ~ "Offense",
+    .$player_positions %like% "LWB|RWB|LB|RB|CDM" ~ "Defense",
+    .$player_positions %like% "GK" ~ "Goal Keeper",
+    .default = "Midfielders"
+  )
+)
+```
+
+# Task n.3.
+
+Complete the code below. Restrict `data` to `short_name`, `role`, `preferred_foot`, `player_positions`, `wage_eur`, `value_eu`, `overall` and all columns starting with “skill”.
+
+```{r}
+data %<>% select(short_name,role,preferred_foot,player_positions,wage_eur,value_eur,overall, contains("skill")) # Fill in your code here
+
+data
+```
+
+# Task n.4.
+
+Complete the code below. Create an ordinary linear regression model. Use `overall` as a dependent variable and `skill_dribbling` and `preferred_foot` as predictors (aka independent variables). Apply the `summary()` function to a model object for getting the verbose readout.
+
+```{r}
+model <- data %>%
+  filter( .$role %in% c("Offense"))  %>% # Select offensive players
+  select(overall, skill_dribbling, preferred_foot)  %$% # Select offensive players
+  lm(overall ~ skill_dribbling + preferred_foot, data = .) # Formalize model parameters
+
+summary(model) # Get more detailed statistics of a model fit
+```
+
+# Task n.5.
+
+Complete the code below. Use the correct subsetting operator for data extraction. Calculate residual sum of squares (RSS) — an absolute measure of model error — and root mean squared error (RMSE) metrics, a relative measure of model error. Explain which metric is used in which case. Explain what actually mean RMSE in the context of your data.
+
+```{r}
+residuals <- model$residuals # Extract residuals from the model object
+RSS <- sum((residuals ** 2))# Calculate residual sum of squares
+RMSE <-  (RSS/length(residuals)) ** (1/2)# Calculate residual root mean squared error
+
+RSS ; RMSE # Print RSS and RMSE
+```
+
+# Task n.6.
+
+Think about other built-in functions that are used to extract data from model objects. What are they? Research web to find out.
+
+```{r}
+par(mfrow = c(1,3)) # par() sets up a plotting grid: 1 row x 3 columns
+plot(model, which = c(1,2,5))
+```
+
+```{r}
+plot(model$residuals)
+```
+
+```{r}
+install.packages("scatterplot3d") # Install
+library("scatterplot3d")
+```
+
+```{r}
+scatterplot3d(x=data$preferred_foot, y=data$skill_dribbling, z=data$overall)
+```

@@ -1,0 +1,52 @@
+DSOZB C3.
+
+- Pouzivaj nesteg graphs, alebo niekolko grafov v jednom boxe/div/odseku
+- FT fourierova transformáca, v nej prechádzame z časovej domeny do spektralnej a magnitudové
+-
+ funkcia spektogram najde naj. spektra (najde dominantnú frekvenciu)
+
+
+ Problém spektral leakage (tie maličké spektralne indexi ktr. nie su nulove a ani dominantné)
+ tak pre riesenie tohto problemu možme použiť okienkovu funkciu, ako napriklad hamming
+- akonahle prenasobyme náš signal tak nám vyjde signál ktorý by mal mať minimalny spektral leaking.
+
+hamming(512)
+		256 (mozno window parameter)
+		512
+
+
+	Zero padding
+	nesmieme mať vzorkovacu frekvenci u nad 16 Hz
+	Fs = cca 64
+
+	1. FFT 
+	2. Doplnenie 0 do dlzky 1024 
+
+
+	zero padding pri spektre = lepsie rozlisenie
+	zero padding pri priestore = ???
+
+
+	pri doplnani cisel použi funkciu complex() pre komplexné čísla
+
+
+
+	importdata("nao")
+	sampligRate = .... .fs
+	signalLadicka = ...(1, ..) 
+
+	[M, i] = max(....)   alebo spectral
+
+
+
+-- Poznamka: pri funkcii fft, su amplitudy divné -- neboly normalizované cez 1/N
+
+
+---- Poznamka k druheho protokola: 
+najcastejsia chyba, generovanie nahodneho šumu
+
+
+
+spectrogram(signal, hamming(512), 256 (overlap with last window), 512, FS)
+
+ladicka má dve výstupi, lavy pravý 

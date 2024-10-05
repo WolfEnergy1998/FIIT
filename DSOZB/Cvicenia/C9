@@ -1,0 +1,23 @@
+
+
+
+
+Transf. a quant. pouziame matice zadavné v cvicení
+
+-Budeme downsamplovať i matice
+
+na zaklade quality var. si pozmeníme matice (0-100)
+
+
+1. rozdelíme si oobrazok na bloky velkosti 8
+2. v každom bloku zmenime RGB -> Cb Cr Y
+3. double downsamplneme a naraz transponujeme
+4. tieto 3 kanály, Y =  Round(DCT2(Y) /(choosen_Alfa * Ql)), cb cr = Round(DCT2(Cb || Cr) / (choosen_Alfa * Qc))
+5. Vsetky kanály vynaseobime 
+cez kompresny pomer = 1 - (NoNnullPixel/all_pixel)
+
+number of non-null Pixel = nnz
+
+Re-compr. =
+v podstate operacie opacneho poradia ale namiesto downsamplingu použi crone
+ cron() pre zmenu 4x4 cb cr na 8x8

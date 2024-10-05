@@ -1,0 +1,112 @@
+---
+title: "Week-2.5"
+output: html_document
+date: "2024-03-22"
+---
+
+# Tasks for 6. week
+
+```{r}
+library(tidyverse)
+library(MASS)
+library(magrittr) # Pipe implementation for R
+library(data.table) # Implements %like%
+```
+
+## Task 1.
+
+```{r}
+data <- read_csv("Files/default.csv",col_names = TRUE, num_threads = 4) # Read data into R
+data # Check that data are properly loaded
+View(data)
+```
+
+## Task 2.
+
+Analyze the data you want to classify? How does the defaulters and the non-defaulters groups look like? What inferences do you draw from your analysis?
+
+```{r}
+data %<>% mutate(default = ifelse(default == "Yes",1,0),
+                 student = ifelse(student == "Yes",1,0)
+                 )
+data[, c("default","student")]
+```
+
+```{r}
+library(plotly)
+#plot(data)
+non_defaulters = data %>% filter( .$default < 1)
+defaulters = data %>% filter( .$default > 0)
+
+par(mfrow=c(2,2))
+qqnorm(non_defaulters$balance, main = 'Q-Q Plot for Non-defaulters')
+qqnorm(defaulters$balance, main = 'Q-Q Plot for Defaulters')
+boxplot(non_defaulters$balance,main = "Theoretical quantiles of Non-defaulters")
+boxplot(defaulters$balance,main = "Theoretical quantiles of Defaulters")
+```
+
+## Task 3.
+
+Create the LDA model and make the prediction object. Fill-in the missing parts of the code.
+
+```{r}
+model_lda <- lda(data$default ~ data$balance, data=data)
+#View(model_lda)
+lda_predict <- predict(object = model_lda)
+```
+
+## Task 4.
+
+ Analyze the structure of the prediction object. What does it tell you?
+
+```{r}
+model_lda
+```
+
+```{r}
+str(lda_predict)
+```
+
+```{r}
+head(lda_predict$class)
+```
+
+```{r}
+head(lda_predict$posterior)
+```
+
+## Task 5.
+
+Investigate data frame that you got from pROC. Why are there only 219 rows? It seems that pROC returns only results for the most bend part of the ROC curve and drops all other results. In this case, it would be for balances from 652 USD to 2420 USD.
+
+```{r}
+library(pROC)
+plot.roc(data$balance, data$default)
+View(lda_predict)
+plot.roc(data$balance,lda_predict)
+```
+
+## Task 6.
+
+Think how can the resulting data frame be used to find the maximal value for the “top left” or Youden and how would you pair that information with the information about balance values and probabilities you have. This should be relatively easy and doable with the knowledge that you already have.
+
+```{r}
+```
+
+## Task 7.
+
+Think about the optimal cutoff point. What does it tell you? Is the optimal cutoff always optimal? How does it go with your goals?
+
+```{r}
+```
+
+## Task 8.
+
+```{r}
+```
+
+## Task 9.
+
+```{r}
+View(data)
+```

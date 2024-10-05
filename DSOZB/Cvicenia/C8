@@ -1,0 +1,19 @@
+
+1. V podstate podobne ako z minuleho, len teraz pouzivame filter pre odfilrovanie salt peper sum
+
+
+
+2.
+
+	pred tim to daj do frevencnej oblasti a pak fftshift
+	Periodicky sum --- odstranenie vlasne vytvoreným band stop filtrom, použi funkciu gimp pre zistenie bodov filtrovania
+
+	hladame jasnejsie body ktore niesu v STREDE
+
+	Spot filter ---- kliknutim odfiltrujem vybrane body svetla
+
+
+	real() bez warningov
+
+	pri convolucii pouzi zero padding
+

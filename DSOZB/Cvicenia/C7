@@ -1,0 +1,31 @@
+
+
+
+
+Gaus filter a obrazok = blur obrazka
+Laplace a .... = ram obrazu
+
+
+0. nacitame obrazok a vyberieme si grayscale
+1. vytvorime filtre
+2. vykonáme 2D convoluciu
+3. Sober a laplac nam zobrazia vyzšie frekv
+	Gaus nam vyzsie frek zjemní
+
+
+
+	5. V 2. ulohe, po vypocitani fourierovej trans. tak to transp, abs() a log()
+
+
+
+
+	filter velkosti 
+	HP filter, mozme si ho vytvorit, matica 1, pak pomocou vzdialenosti od stredu vsetko vynulujeme v strede
+
+
+
+	idealny filter = má ostru hranu = napr. filter s 0 a 1
+	gausov filter = vytvorenie obrazok velkosti MxN, ked chceme si presnejsie nastavit filter, tak pouzi rescale()
+
+	*Vyzualizuj všetky filtre
+	log() iba pri vizualizácií

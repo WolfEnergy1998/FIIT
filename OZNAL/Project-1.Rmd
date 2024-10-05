@@ -1,0 +1,69 @@
+---
+title: "Project-1"
+output: html_document
+date: "2024-03-29"
+---
+
+# 0. Functions:
+
+## 0.1. Show most significant correlation matrix
+
+```{r}
+disp_sig_corrMat <- function(data_par, type_of_correlation, max_N){
+}
+```
+
+## 0.2 Hot encoding categorical data into numericals
+
+```{r}
+hot_encode <- function(data_par, column_par){
+  for (column in data_par){
+    
+  }
+}
+```
+
+# Project 1
+
+## 1. Data pre-processing
+
+### 1.1. Data loading
+
+```{r}
+library(tidyverse)
+library(magrittr) # Pipe implementation for R
+library(data.table) # Implements %like%
+data <- read_csv("Files/speeddating.csv", col_names = TRUE, num_threads = 4) # Read data into R
+head(data,5)
+```
+
+### 1.2. Data exploration
+
+```{r}
+#Check data
+View(data)                  # View table
+# Getting data dimensions
+dim(data)                   # View dimensions of table
+lobstr::obj_size(data)      # View memory size of table
+# Data summary
+table(sapply(data, class))  # View class info of table
+typeof(data)                # View type of table
+```
+
+From thees informations we have come to several conclusion:
+
+1.  Data set is sufficient for our needs (project specifications)
+2.  Observations are inter-independent
+3.  These data are long data
+4.  Number of categorical attributes is too big for our following processing \<-- It will be needed to encode it
+5.  Several of attributes are intervals
+
+### 1.3 Null values
+
+```{r}
+sum(is.na(data))
+```
+
+We have found zero null values in dataset, in this case there is no need for futher modifications of dataset, for this reason.
+
+### 1.4. Data reduction

@@ -1,0 +1,33 @@
+Opakovanie:
+
+	-Pri convolucii "same" robí padding, respektive pre doplnenie správania na okrajoch signálu
+	|X| pocitaný prvok
+	rawsignal    (||X||)|||		|(||X||)||			
+	filt. jadroj (||||)			 (||||)
+
+	-Combinácia HP a LP filtra? Dá sa, existuje
+	-Co je konvolucný teorém.
+		-convolcia značí že vnasobenie v time a spektral domain je rovnaké
+
+
+Nová:
+	F0: fundamental freq, to sa opakje u vsektých hláskach,
+	pre odhalsenie použijeme complexné cepsum, funkcia cceps
+		1. vezmeme si okienko z jedného stlpca,
+		2. pren vypocitame cepsum
+		3. Vizualizujte peak, v určitom  intervale, cca 0.002 - 0.01 pohladáme nejaky peak 0.042
+		4. Z predsle ziskaneho peaku vypocitame F0,  cca v hrazdy 100Hz až 200Hz
+	F1:
+	F2:
+	F3.
+
+
+
+
+
+Ku kazdemu stlpci popis k comu som to identifikoval, a potom porovnanie ake pismeno to je podla vypocutia
+
+
+
+
+Dávat pozor na komplexné cepsum

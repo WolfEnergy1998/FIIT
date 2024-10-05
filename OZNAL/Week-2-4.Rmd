@@ -1,0 +1,32 @@
+---
+title: "Week-2.4"
+output: html_document
+date: "2024-03-22"
+---
+
+## Task 1.
+
+Load the credit dataset Default.csv (you will find it on the server). Think about the dataset. Does balance values fulfills all requirement for LDA? Which test would you chose to compare the distributions of balance values between defaulters and non-defaulters? How would you modify the data to be ready for using in your LDA model?
+
+```{r}
+
+library(tidyverse)
+library(magrittr) # Pipe implementation for R
+library(data.table) # Implements %like%
+data <- read_csv("Files/default.csv", col_names = TRUE, num_threads = 4) # Read data into R
+data # Check that data are properly loaded 
+```
+
+## Task 2.
+
+Perform the modelling and compare the RMSE for training and testing dataset. What is the outcome?
+
+```{r}
+
+```
+
+## Task 3.
+
+```{r}
+
+```

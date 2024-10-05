@@ -1,0 +1,76 @@
+Personality engine architecture:
+
+	AI based game NPCs, architecture design patterns:
+		- Reseach number of design patterns for AI powered NPCs. Find similarities and propose possible betterment of design pattern/s.
+		- Discuss fallout of usage "Alive" AI in game/and whatever else's industries. Pros: realism, Cons: morali questionable.
+		- Discuss how far has such an AI NPC from AL(Artificial Life).
+		- Discuss possible contribution of AI powered NPCs in game world dynamicity.
+
+		Questions: 
+			- What desings or more, desing patterns are used for AI based game NPCs?
+				* Can you find improvement areas?
+				* What are current chalenges in AI based NPCs architecture?
+			- What are advantages of AI usage in game industry/other industries, and more specifica for NPCs?
+			- What are concurently, disadvantages of this practice?
+			- How far is AI powered NPCs from real AL(Artificial Life)?
+			- Posibility of changeable/dynamic game world?
+
+
+	Start up web pages:
+		https://medium.com/@stannotes/design-unpredictable-ai-in-games-part-1-architecture-3752a618db6
+
+		https://www.wired.com/story/ai-game-design-midjourney-ethics-development/
+
+		https://inworld.ai/blog/ai-npcs-and-the-future-of-video-games
+
+		https://www.pcgamer.com/autonomous-ai-npcs-are-here-and-theyre-planning-parties/
+
+		https://developer.nvidia.com/blog/generative-ai-sparks-life-into-virtual-characters-with-ace-for-games/
+
+
+	Possible science articles:
+		https://arxiv.org/abs/2304.03442
+
+		https://ui.adsabs.harvard.edu/abs/2013arXiv1307.3195A/abstract
+
+
+
+
+Metodologický pristup/prínos:
+
+	Ddesing pattern book from 1994 --- 3 categories of architecture patterns (1. for creating objects OOP, 2. )
+	What to look for, or use:
+		Tools:
+			Sonar cube: (soft. for finding software risks/zranitelnosti)
+			Java swing
+		What to look for:
+			Patterns
+			Relations between patterns
+			AntiPatterns
+			Code smells
+
+		1.mozme navrhnuť i nejaké teoretické prinosi: len si niesom isty či to môže byť 
+	----->Hladaj vzory správania: či už praktické kladné záporne, navrhny vylepsenia, alebo elimináciu nejakých vzorov.
+		Pokusiť sa pozmeniť arhitectúru na vyzšej úrovny. Urob kontrolu obviklých návrhových vzorov, pravidiel ... (správne zapuzdrenie)
+	-----> nemusime hladať iba vzory, môžem hladať i prepojenia medzi vzormi ( napr. v jednom článku hladali vzory/prepojenie vzorov pomocou aplikcie strojvého učenia)
+
+
+
+
+
+
+Uvod:
+	1. Uvod do AI powered NPCs
+	2. Ich kategoriazácia
+	3. Ich architektúra
+	4. Zmienenie typov design patterns
+Jadro:
+	1. Hlbší opis architectúry NPCs s polu s nejakými diagrami UML
+	2. Opis architectury NPCs spolu s AI
+	3. Design patterns, ich klady a ich zápory, ich commonalities
+	4. Možné vylepšenia v architecture, alebo design patterns.
+	5. Dôkazi, teorie, ... možno use casei
+	+Pohladaj reprezentujúci program, reozitár kde je aplikovaný spomínaný design pattern.
+Záver:
+	1. Opis eseje
+	2. nadobudnuté výsledky záveri

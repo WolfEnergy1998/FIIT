@@ -1,0 +1,202 @@
+---
+title: "Week-1-2"
+output: html_document
+date: "2024-02-18"
+---
+
+# Part 1.
+
+## Task n.1.
+
+Complete the code below. Load players_22.csv file into R. We will refer to this dataset as data thorough this exercise.
+
+```{r}
+library(tidyverse)
+library(magrittr) # Implements pipes 
+
+#getwd() # Find where you are
+#setwd("...") # Set the correct path to players_22.csv
+#list.files() # List all files in the working directory
+
+data <- read_csv("Files/players_22.csv", col_names = TRUE, num_threads = 4) # Read data into R
+data[1,]# Check that data are properly loaded
+```
+
+```{r}
+View(data)
+```
+
+```{r}
+help(filter)
+```
+
+```{r}
+class(data)
+```
+
+```{r}
+typeof(data)
+```
+
+## Task n.2.
+
+Restrict data to European’s five major leagues. Include French Ligue 1, Spanish Primera Division, English Premier League, German Bundesliga and Italian Serie A.
+
+```{r}
+okLeagues =  c("French Ligue 1","Spain Primera Division","English Premier League","German 1. Bundesliga","Italian Serie A")
+data[data$league_name %in%  okLeagues,]
+```
+
+## Task n.3.
+
+Complete the code below. In each league, count left- and right-footed players and present these data in a tabular format similar to the one below (showing only first 3 lines).
+
+```{r}
+help(rename)
+```
+
+```{r}
+step_1 <- data %>%
+  filter(league_name %in% okLeagues) %>%
+  group_by(league_name, preferred_foot) %>%
+  #tally() %>%
+  summarise(Count = n()) %>%
+  rename(League = league_name, Pref_Foot = preferred_foot) %>%
+  print(n = 3)
+```
+
+If you have done everything correctly, your data can be plotted with the following code.
+
+```{r}
+#-----Theme defaults-----
+theme_set(theme_bw() + 
+            theme(panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank()))
+
+#-----Stacked barplot-----
+step_1 %$%
+  ggplot(., aes(x=reorder(League,Count), y = Count, fill = Pref_Foot)) +
+  geom_col() + 
+  geom_text(aes(label = format(Count, group = as_factor(Pref_Foot))), 
+            colour = "white", position = position_stack(vjust = 0.5)) + 
+  scale_fill_manual(values=c('#3153a2', 'lightgrey')) + 
+  ggtitle("Letfies in Major European Leagues", 
+          subtitle = "Number of Players per League") +
+  theme(legend.position="bottom",
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(colour = "grey")) + 
+  coord_flip()
+```
+
+## Task n.4.
+
+Complete the code below. Format data frame step_1 as wide. Calculate total number of players per league and the proportions of left- and right-footed players. Append results to the table.
+
+```{r}
+ step_2 <- step_1 %>% 
+   pivot_wider(names_from = c(League,Pref_Foot), values_from = Count) %>%
+   mutate(n_all = sum(.[1,]), n_left_right = sum(step_1[step_1$Pref_Foot ==  "Left",]$Count) / sum(step_1[step_1$Pref_Foot == "Right",]$Count))
+```
+
+```{r}
+ step_2 <- step_1 %>% 
+   pivot_wider(League, names_from = Pref_Foot, values_from = Count) %>%
+   mutate(n_all = Left + Right, n_left_right = Left / Right)
+ 
+ step_2
+```
+
+# Part 2.
+
+## Task n.1.
+
+Complete the code below to extract playing positions. Group by foot preference. Restrict to 5 national leagues mentioned above.
+
+```{r}
+help("mutate_all")
+```
+
+```{r}
+step_1 <- data %>%
+  filter( league_name %in% okLeagues) %>% # Use filter to select leagues of interest
+  select(preferred_foot, player_positions) %>% # Use select to get columns you need
+  group_by(preferred_foot) %>% # Use group to aggregate data according to player's foot
+  transmute(Position = strsplit(player_positions, ", ")) %>%
+  unnest(cols = Position) %>%
+  rename(Pref_Foot = preferred_foot)
+
+step_1 %>% print(.,n=3)
+```
+
+## Task n.2.
+
+Complete the code below. Use `ungroup()` to remove previous grouping by foot. Then re-apply `group_by()` to make a fresh grouping by foot and playing position. Pivot the table *wide* to get the desired table below.
+
+```{r}
+step_2 <- step_1 %>% 
+  ungroup(Pref_Foot) %>%
+  group_by(Pref_Foot, Position) %>% # Group data by foot preference and position  
+  summarise(Count = n()) %>% # Generate raw counts for each position
+  pivot_wider(Pref_Foot, names_from = Position, values_from = Count) %>% # Spread
+  mutate_all(coalesce, 0)
+  #replace(is.na(.), 0) # Convert missing values to 0 
+
+step_2
+```
+
+## Task n.3.
+
+Complete the code below. Classify player roles into one of the 3 categories: offense, defense and midfielders. Calculate total number of players in each category. Decide on which group CAM and CDM are included.
+
+> There are 21 player roles (or positions at which they play), FIFA uses 15.
+
+Offensive players are forwarders (CF), wingers (LW, RW) and strikers (ST). Defensive players play at back positions either as rear wingers (LWB, RWB,), centers (CB), or at flanks (LB, RB).
+
+Midfielders play situationally either as forward (LM, CM, RM), attacking midfielders (CAM), or defending midfielders (CDM). We will count CAM into offense and CDM into defense.
+
+Goal keepers (GK) constitute a separate category, but you can count them as defense.
+
+```{r}
+step_3 <- step_2 %>%
+  group_by(Pref_Foot) %>%
+  transmute(Offense = CF + LW + RW + ST, 
+            Defense = LWB + RWB + CB + LB + RB + GK,
+            Midfielders = LM + CM + RM + CAM + CDM)
+step_3
+```
+
+## Task n.4.
+
+Complete the code below. Absolute numbers does not tells us much because each group has different totals.
+
+```{r}
+help("tally")
+```
+
+```{r}
+step_5 = step_1 %>%
+  group_by(Pref_Foot) %>%
+  tally()
+step_5
+```
+
+A sensible approach is to compare the relative counts — i.e. the percentage of players in each category.
+
+```{r}
+help("relocate")
+```
+
+```{r}
+# Create a 2 x 3 matrix with population totals. 
+popCounts <- matrix(rep(c(1341,3705),3), nrow = 2) 
+
+# Divide the relative counts from step 3 by population totals. 
+# Save the resulting matrix as step_4
+step_4 <- (step_3[,c("Offense","Defense","Midfielders")] / popCounts)
+
+step_4 %>%
+  mutate(Foot = step_3$Pref_Foot) %>%
+  relocate(Foot) # Rearrange attributes as shown below.
+```

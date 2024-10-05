@@ -1,0 +1,116 @@
+DSZOB PREDNASKA č.1.
+
+Knihy: Pocitacové videnie: vgg.fiit.sk./kniha
+
+
+SIGNAL:
+	(Signal: je to velicina/signal meniaci sa v case a je zaznamenitelny)
+	-periodicky (p. amplituda)
+	-kvazi-periodicky signal (ciastocne, sa meniaci)
+
+	-Analogovy signal: CONTINUOUS signal (y = x(t))
+	-Digital signal: SEQUENCE OF NUMBERS/DISCREETE values (Y_n = X(n * delta-T))
+
+
+	Discretizácia v čase: Discrete signal -> (sampling) -> time-... signal
+							--||---------- ->  (quantifaing) -> ........
+							............................................
+							............................................
+
+
+							-parny signal (homogenny/zrkadlovy pre os X)
+							-neparny signal ()
+							-Determnisticky signal (je možné získať jeho hodnotu v čase)
+							-Random: nadobúdau random hodntoty v ´hociktorom casovom okamihu modelet stochacilaly 
+
+							-Periodic signal: must have these cond. x(t) = x(t plus T)   T:basic time period
+
+
+
+			Spectral analysis: Fourier/Cosine/Wavelete transformation
+
+			Signal 1D, 2D:   Audio (speech ), Seismic, Ekg ...
+
+
+
+SIGNAL PROCESSING:
+		Audio: (Sampling, Compresion, Coding, Data compression, Procesing in frequenci domain, ...)
+
+
+
+COMPUTER GRAPHICS (syntéza obrazu)   IS NOT  COMPUTER VISION ( Analýza obrazu)
+
+
+Raster image (pixel, ...)  --- Vector image
+
+
+
+Gray scale image can be defined by: f(x, y)  where it point in coordinations x and y its value of brightness/grayness (jas)
+
+
+MATRIX image
+	Result of sampling and quantization (of image) is matrix of numbers
+
+
+Images:
+	GRAY scale image: m x n
+	Colour image: m x n x 3
+	...
+	Multi-spectral image: m x n x x
+
+
+Video: image sequence
+	-for human eye: continuous video is minimal: 10 f/s (frames/sec.)
+
+
+
+
+ANALOG TO DIGITAL: 
+	AKTER --> ADC (analog digital convertor) --> Digital system --> DAC (digital analog convertor) --> Reproductor/...
+
+	CONTINUOUS FUNCTION ---------------------->  0 and 1 function -------------------------------> aproximation between 0/1 function and Continuos function
+
+
+	Digitalisation sampling and quantisation ( conversion from continuous func. to 0/1 function --- aproximation)
+
+
+	SAMPLING:
+		audio: deltaT
+		image: deltaX and deltaY
+
+	Dynamic range: ratio between min. and max. possible value (of changeable quality)
+		-in Decibel dB: 	L_a[dB] = 20 log_10(A_max/A_min) A is amplitude
+						L_p[dB] = 10 log_10(P_max/P_min) P is power
+					Decibel == počet analógových ÚROVNÍ 
+		No of bits in Digital: 8b 12b ...
+		( cca. for 1b -- 6dB)
+
+		-Grayscale image: number. of grey levels typically is an integer power of 2: I = 2^k (where k is a number of bits)
+		(v podstate v matici MxN je možné mať v jednom mieste hodnotu v rozsahu 2^k kedy 2 je kvoly tomu že to môe byť 0, alebo 1. To je z dôvodu toho že ako zápis sú použité bity a ich počet (k) určuje hornú hranicu 2^k možných hodnot ktoré sa takto dáju zašifrovať.
+
+		-LSB (least significant bit)
+
+		-Quantization error: caused by aproximation of values for levels, or difference between amplitude[-A,A] and quantification/... of levels N
+		-SNR signal to Noise Ratio: SNR = P_signal/P_noise, or SNR = (A_signal/A_noise)^2
+
+
+
+		Sampling f(t): Diract sampling function/... s(t; deltaT)   --- hodnota v čase T pri samplovacom čase deltaT
+
+		Sampling theorem Nyq, Kotl. Whi..,
+			Nyquist: Sampling frequency must be at least twice the highest freqency contained in signal: f_s  >= 2*f_m
+					example: max freq. of human hearing 20 KHz, then we are sampling with frequenci of cca. 44.1 KHz
+			Aliasing: when Nyquis criterium is violated -- frequenci ... appears as below amplitude
+
+
+			Moare ..., podvzorkovaný obrazok
+
+---> Question: What is principle of Nyquist sampling theor., and aliasing
+---> CHECK Computer vision lessons, for Summer semester
+
+			Anti-aliasing filter: Analog signal --> Anti-aliasing filter --> AD converter
+							Anti-aliasing filter, above certaing frequenci it will delete it value, basicaly it reduces data/frequenci above choosen value
+
+
+
+							1/T = f

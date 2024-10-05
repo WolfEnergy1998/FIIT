@@ -1,0 +1,84 @@
+AS P1
+
+-FIRST THING TO DO BEFORE STARTING DEVELOPING YOUR SOFTWARE SYSTEM:
+	My:
+		1. Posible timetable. / 2. define goal for this software, this project
+		3. Identify target users.
+		4. Choose IDE and platforms/tools for completing, the software
+		5: Use cases, and func. requirements
+		6. Wire frame
+		7. Low fidelity frame
+		.
+		.
+		.
+		X.High fidelity frame
+
+	Whole:
+		1. business case
+		2. stack nástrojov  <--- záleží od ludí (vývojarov, a semi-hlavne na zákaznikov), taktiež sa to odvíja od financií
+		3. ožiadavky a návrh riešenia
+		4. Prípady použitia  <--- user story
+
+-WHAT LEVEL OF DETAIL IS APPROPRIATE FOR SOFTWARE ARCHITECTURE I FEXPRESSEd GRAPHICALY:
+	My:
+		1. At level of elementari school <--- just for better understanding and visualization
+		2. Based on diferent layers of architecture diferent degree of graphical representation, but always must be maintained simplicity of representants, whether morphological or quantitative
+
+	Whole:
+		modely rôznej úrovne abstrakcie:
+			Komponenty:
+				.
+				.
+				.
+			diag. sekvenc.
+
+
+-CODE ARCHITECTURE:
+	My: UML
+
+	Teacher:
+	1. Interfaces
+	2. Abstract classes
+	3. Packages
+-Based on what are you DOIING DESING DECISIONS:
+	My:
+		1. Interest
+	Teacher:
+		1. navrhve vzory
+		2. ... princípy
+
+
+-REUSE
+	My:
+		1. On level of functions.
+		2. Maximum, classes, structures
+
+	Teacher:
+		1. Coupling
+		2. pre reuse musím mať komponenty KTORÉ nie su heavy connected/prepojené
+
+-HOW WOULD YOU ORGANIZE COMPLEX SOFTWARE SYSTEM:
+	My:
+		1. 
+	Teacher:
+		1. One room --> locked --> loose key 		1 LIKE
+		2. 
+
+
+
+-ARCHITECT
+	My:
+		1.
+	Whole:
+		1.
+	Teacher:
+		2. 
+
+
+
+
+
+ARCHITECTURE: is expressed in many ways but it shoud always focus on IMPORTANT THINGS
+			IS MORE ABOUT PEOPLE
+			UNDERSTANDING existing software system requires RECOVERING/acquiiring its architecture
+			Separate what System is from what he does, anticipate changes

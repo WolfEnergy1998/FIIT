@@ -1,0 +1,12 @@
+NN_C3
+
+
+
+
+Pre:
+ db = matmul(dZ * ones(m))
+
+
+
+ Main Processing Cell>:
+  	Staci sa dryat postupu.

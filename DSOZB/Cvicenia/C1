@@ -1,0 +1,33 @@
+DSOZB C2.
+
+
+1. pri vypoctov tiez display vysledky
+2. lepsie pomenovanie osi
+
+1.,2.,3.,4.
+f_5 = 44 KHz
+f_1 = 440
+
+sin(2pi * x * f_1)
+
+AKORD
+play()
+
+
+2.
+
+downsample(signal, MULTIPLIKATOR)
+Poznamka: zmensuj aj graf(x rozsah)
+
+
+hold on
+
+
+2.3  vezmi si naj. signál a daj to do jeho polovice
+
+
+
+
+------POZNAMKY:
+
+POPIS co pocujes

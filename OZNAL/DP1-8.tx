@@ -1,0 +1,18 @@
+3.3 Countermeasures
+Fault injection countermeasures can be deployed at different levels of the design – model architecture, software implementation, and hardware layer. In this part, we will discuss each of these in more detail.
+
+Model Architecture. Neural networks contain vast amount of interconnected nodes. Because of their working principle, not all of them are activated for every input. Therefore, if faults are injected into nodes that are unused in the current execution, there will not be any outcome [41]. This behavior is known as partial fault tolerance and it was shown that neural network implementations of cryptographic operations can make them more resistant to faults than standard implementations [2]. The more redundancy is in the network, the better fault tolerance can be achieved, at the cost of higher memory usage and computation complexity.
+
+Software Implementation. Redundancy and checks can be added in the model computation on the software level. A naïve approach would be to repeat the computation two or more times and then compare the results. If they are not equal, the device might have been tampered with. Redundant instruction sequences can protect against pre-defined number of faults [39]. Data within the instructions can be arranged in a redundant way that will protect against both data corruption and instruction skips [42]. Non-linear codes can be used to implement the operations that allow protection against multiple bit faults per operation [7].
+
+Hardware Layer. Error detection and correction codes can be efficiently implemented in hardware. Computational circuits, or parts of them can be implemented in parallel and majority voting can be utilized to prevent outputting the faulty result [10]. Additional circuits can be deployed to detect voltage variations caused by fault injection. These circuits can raise an alarm and a pre-defined action to prevent the information leakage or release of incorrect output can be taken [23].
+
+Additionally, there are physical measures that can be applied to prevent tampering, such as special shielding of the chip or erasing of memory if the chip package is damaged.
+
+4 Conclusion
+We have surveyed known physical attacks used for the purpose of reverse engineering ML models on a range of platforms and discussed possible countermeasures. The results published so far demonstrate that stealing the models in this way (as possible IP) is a clear and present threat. Specific use cases and applications on various edge and IoT devices should be carefully examined against those threats and accordingly protected.
+
+5 Open Research Problems
+Powerful adversaries today include those exploiting side-channel leakage from implementations on ML models and the ability to actively disturb the device’s operations. Combining the two poses even more challenge to the engineering efforts in designing adequate defenses. The countermeasures considered so far are mainly from the crypto/security applications, which makes them sub-optimal. On top, typical overheads in resources such as power/energy makes those defenses often unsuitable for low-end devices. As the adversaries are becoming ever more powerful and knowledgeable, it is necessary to revisit the design cycle and make it open at various phases such that the results of preliminary security evaluation can still be fed back to the implementations.
+
+We see future works going more into directions of ML-specific countermeasures and new frameworks to evaluate the leakages before the models are put into the field.

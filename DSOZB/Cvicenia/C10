@@ -1,0 +1,28 @@
+V YCbCr, najdolzitejsia cast je v Y kanaly
+skus použiť montage()
+
+
+Jpg 2000
+	namiesto kompresie v DCT, komresujeme v ramci vavelenght
+
+
+	dwt2 ---> 4 navratove matice
+	wavedec2 --> 2 matice
+	wrcoef2 --->pre vytiahnutie cielených dát
+
+	stiahntie ---> oknverzia na wavelenght type --> rozdelme --> na každe aplikujeme vzorec
+
+	vynasobime jednotlive matice napr. 10 ---> spetne vraciame
+
+
+	po wavelen2 je potrebne vynasobiť
+
+
+
+	Diadicka dekompozicia:
+		[c, s] = wawedec(...)
+
+		a_3 = coef("a",...,3)
+		h_3 = coef("h",...,3)
+
+

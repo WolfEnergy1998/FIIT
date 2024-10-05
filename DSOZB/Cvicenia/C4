@@ -1,0 +1,36 @@
+Cviko 4:
+
+Uloha 1.
+- vytvor zlozeny signal
+- vypocitaj fft
+- použi okienko,     	
+		specktral leakage zaciatok okienka(nie hamming ...) nie je na rovnakej urovni ako koniec (amplitudovo), prejava v spektralnom grafe cez kopčeky v grafe. Pre riešenie spectral leakage použivame okenka, ako napr. hammingov, alebo hannigov, ...
+	Použite 1. hammingovo okienko,
+			2. pravouhle okienko, graf nul (pravo 128 nul, 256 jednotiek, lavo 128 nul) a jednotiek
+	Vysledok efektu jednotlivých okienk.
+Windowing
+
+Uloha 2.:
+Signal reduction (snazime sa vynulovať nepodstané indexy)
+	vysledok DCT nemusime upravovať absolutnou funkciou
+	stanovýme si nejaký treshlold, pod ktorého indexové hodnoty vynulujeme
+	4. 
+	Skuste viaej hranic, okienok, porovnaj jednotlivé hranice a vyhodnoť
+
+
+
+
+Započtový test:
+	cca. 6-7 týždeň
+	cca 5 otazok, latka 1-6
+	AIS test
+	napr. Vysvetlite čo, alebo čo v tejto situacii, skuste toto vypočitať
+	Nezabudnut si kalkulacky
+
+	pri cykle, cez okienka, DCT pre okienko --> redukcia (lossy) --> IDCT --> Spajanie okienok
+
+
+
+
+Chyby:
+	IDCT použite na výstp redukcie

@@ -1,0 +1,42 @@
+OZNAL 2:
+
+
+fun = function(par1, par2, ...){}
+... <--- N pocet moznych parametrov (*kwargs)
+
+fun = function(par1, par2, ...)
+
+
+|> (Basic pipeline)																				example: x |> f(y)   <=> f(y,x)
+%>% (more specific pipelien, with help tool of "." for specifiing placement of inputed data)	example: x %>% f(y,.) <=> f(y,x)
+
+typeof(data %>% .$skill_dribling)  <----- into function typeof() we insert atomic vector (column of name skill_dribling from dataframe data)
+
+
+
+data %>% select(column1, columns2, column3, star_with("columnX")) %>%
+	rename(columnX = "XXXX")
+
+
+
+Pridavanie
+	Stlpcov  --> mutate
+	riadkov ---> add_rows(columnX = "XXX", value)
+
+Spojenie Rozdelenie stlpcov
+	unite(), sep()
+
+
+
+summarise()
+map()
+		data %>%
+			select(columnX) %>%
+			map(.)
+
+
+
+data <- read_csv("Files/players_22.csv", col_names = TRUE, num_threads = 4) %>%
+	slice(1:5)
+
+

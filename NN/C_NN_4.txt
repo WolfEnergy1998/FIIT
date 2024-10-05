@@ -1,0 +1,19 @@
+C_NN_4
+
+
+inicializuj zeros_like()obj 
+
+
+
+Poskodenie:  		Binary 						Norm. class.
+					TRUE | FALSE				Y1, Y2, ...Yn
+
+FRAMEWORK: nemus9 to byt co sme doteraz nakodili, mozme pouzit pytorch, ...
+
+
+
+
+1. Spracovanie clanu,
+2. Predspracovanie dat (problemi dat, ako ich riesime,Clasisfication one code encoding)
+3. Maly by sme to zacat kodit
+4. Multilayer perceptron --- Mozme pouzit pytorch, alebo tensorflow

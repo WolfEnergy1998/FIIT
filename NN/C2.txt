@@ -1,0 +1,10 @@
+1. Add_module()
+
+
+HL. uloha ---> FORWARD PASS
+
+np.matmult
+np.dot
+
+
+alfu daj ako default do init() funkci
